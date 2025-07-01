@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I-Hsuan 的作品集網站</title>
+  <style>
+    body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #f5f5f5; scroll-behavior: smooth; }
+    header { background-color: white; color: #111; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+    header h1 { margin: 0; font-size: 18px; }
+    nav a { margin-left: 20px; text-decoration: none; color: #333; font-weight: bold; }
+    nav a:hover { color: #007bff; }
+    h1, h2, h3 { color: #333; }
+    .section { padding: 60px 20px; max-width: 900px; margin: auto; background: white; margin-bottom: 30px; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+    ul { line-height: 1.8; padding-left: 20px; }
+    footer { text-align: center; padding: 30px; background: #333; color: white; }
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: none;
+    }
+    #backToTop:hover { background-color: #555; }
+    .slider { position: relative; max-width: 100%; margin: 20px 0; overflow: hidden; border-radius: 10px; }
+    .slide-container { display: flex; transition: transform 0.5s ease-in-out; }
+    .slide-container img { width: 100%; border-radius: 10px; }
+    .slide-nav { text-align: center; margin-top: 10px; }
+    .slide-nav button { padding: 6px 12px; margin: 0 5px; border: none; background: #007bff; color: white; border-radius: 4px; cursor: pointer; }
+    .slide-nav button:hover { background: #0056b3; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>I-Hsuan | 數位設計師 & 創意實踐者</h1>
+    <nav>
+      <a href="#about">關於我</a>
+      <a href="#portfolio">作品集</a>
+      <a href="#cert">證照</a>
+      <a href="#contact">聯絡方式</a>
+    </nav>
+  </header>
+
+  <div class="section" id="about">
+    <h2>關於我</h2>
+    <p>您好，我是 I-Hsuan，一位來自台灣的數位設計師，擅長多媒體創作、互動設計與程式應用。我相信創意可以解決問題，也能創造感動，期待能透過作品與您分享我在學習與創作的旅程。</p>
+  </div>
+
+  <div class="section" id="portfolio">
+    <h2>作品集摘要</h2>
+    <p>我的作品涵蓋六大領域，包含：程式技術、多媒體設計、行銷應用、策展與藝術設計、設計基礎與創意實作，以下為詳細內容瀏覽：</p>
+    <ul>
+      <li><a href="tech.html">程式與應用技術</a></li>
+      <li><a href="#media">多媒體與設計實作</a></li>
+      <li><a href="#marketing">行銷與產業應用</a></li>
+      <li><a href="#creative">創意與策展設計</a></li>
+      <li><a href="#art">藝術與文化課程</a></li>
+      <li><a href="#basic">設計基礎與方法</a></li>
+      <li><a href="#others">其他創意實作</a></li>
+    </ul>
+  </div>
+
+  <!-- 作品集內容（已存在的各分類）這邊保留 -->
+
+  <div class="section" id="contact">
+    <h2>聯絡方式</h2>
+    <p>歡迎聯絡我洽談合作或作品諮詢：</p>
+    <ul>
+      <li>Email：ihsuan@email.com</li>
+      <li>IG：@ihsuan.design</li>
+      <li>LinkedIn：linkedin.com/in/ihsuan</li>
+    </ul>
+  </div>
+
+  <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">回到頂部</button>
+
+  <footer>
+    &copy; 2025 I-Hsuan. All Rights Reserved.
+  </footer>
+
+  <script>
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+
+    const sliders = {};
+    function nextSlide(id) {
+      const container = document.getElementById(id);
+      if (!sliders[id]) sliders[id] = 0;
+      sliders[id] = (sliders[id] + 1) % container.children.length;
+      container.style.transform = `translateX(-${sliders[id] * 100}%)`;
+    }
+    function prevSlide(id) {
+      const container = document.getElementById(id);
+      if (!sliders[id]) sliders[id] = 0;
+      sliders[id] = (sliders[id] - 1 + container.children.length) % container.children.length;
+      container.style.transform = `translateX(-${sliders[id] * 100}%)`;
+    }
+  </script>
+</body>
+</html>
