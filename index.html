@@ -1,19 +1,111 @@
 ﻿<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>I-Hsuan 的作品集網站</title>
   <style>
-    body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #f5f5f5; scroll-behavior: smooth; }
-    header { background-color: white; color: #111; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-    header h1 { margin: 0; font-size: 18px; }
-    nav a { margin-left: 20px; text-decoration: none; color: #333; font-weight: bold; }
-    nav a:hover { color: #007bff; }
-    h1, h2, h3 { color: #333; }
-    .section { padding: 60px 20px; max-width: 900px; margin: auto; background: white; margin-bottom: 30px; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
-    ul { line-height: 1.8; padding-left: 20px; }
-    footer { text-align: center; padding: 30px; background: #333; color: white; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(120deg, #e0f7fa, #fce4ec);
+      overflow-x: hidden;
+      line-height: 1.6;
+      color: #222;
+    }
+
+    .bubbles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .bubble {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      animation: float 20s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    header {
+      background-color: white;
+      color: #111;
+      padding: 15px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 18px;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #007bff;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+      background: rgba(255,255,255,0.85);
+      margin-bottom: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+
+    ul {
+      line-height: 1.8;
+      padding-left: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #333;
+      color: white;
+    }
+
     #backToTop {
       position: fixed;
       bottom: 30px;
@@ -26,22 +118,91 @@
       cursor: pointer;
       display: none;
     }
-    #backToTop:hover { background-color: #555; }
-    .slider { position: relative; max-width: 100%; margin: 20px 0; overflow: hidden; border-radius: 10px; }
-    .slide-container { display: flex; transition: transform 0.5s ease-in-out; }
-    .slide-container img { width: 100%; border-radius: 10px; }
-    .slide-nav { text-align: center; margin-top: 10px; }
-    .slide-nav button { padding: 6px 12px; margin: 0 5px; border: none; background: #007bff; color: white; border-radius: 4px; cursor: pointer; }
-    .slide-nav button:hover { background: #0056b3; }
+
+    #backToTop:hover {
+      background-color: #555;
+    }
+
+    .arrow-btn {
+      width: 50px;
+      height: 50px;
+      border: none;
+      background: linear-gradient(135deg, rgb(15, 142, 151) 100%);
+      cursor: pointer;
+      position: relative;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .arrow-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .arrow-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-style: solid;
+    }
+
+    .arrow-btn.left::before {
+      border-width: 10px 15px 10px 0;
+      border-color: transparent #fff transparent transparent;
+    }
+
+    .arrow-btn.right::before {
+      border-width: 10px 0 10px 15px;
+      border-color: transparent transparent transparent #fff;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav a {
+        margin: 10px 0 0 0;
+        display: block;
+      }
+
+      .section {
+        padding: 40px 16px;
+      }
+
+      header h1 {
+        font-size: 16px;
+      }
+    }
   </style>
 </head>
+
 <body>
+  <!-- 背景泡泡區域 -->
+  <div class="bubbles">
+    <!-- 泡泡生成（10個） -->
+    <script>
+      for (let i = 0; i < 10; i++) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        bubble.style.width = bubble.style.height = `${Math.random() * 80 + 20}px`;
+        bubble.style.left = `${Math.random() * 100}%`;
+        bubble.style.animationDuration = `${10 + Math.random() * 20}s`;
+        document.querySelector('.bubbles').appendChild(bubble);
+      }
+    </script>
+  </div>
+
   <header>
     <h1>I-Hsuan | 數位設計師 & 創意實踐者</h1>
     <nav>
       <a href="#about">關於我</a>
       <a href="#portfolio">作品集</a>
       <a href="#cert">證照</a>
+      <a href="#club">社團經歷</a>
       <a href="#contact">聯絡方式</a>
     </nav>
   </header>
@@ -50,26 +211,249 @@
     <h2>關於我</h2>
     <p>您好，我是 I-Hsuan，一位來自台灣的數位設計師，擅長多媒體創作、互動設計與程式應用。我相信創意可以解決問題，也能創造感動，期待能透過作品與您分享我在學習與創作的旅程。</p>
   </div>
-
+  
   <div class="section" id="portfolio">
-    <h2>作品集摘要</h2>
-    <p>我的作品涵蓋六大領域，包含：程式技術、多媒體設計、行銷應用、策展與藝術設計、設計基礎與創意實作，以下為詳細內容瀏覽：</p>
+    <h2>作品集</h2>
     <ul>
-      <li><a href="tech.html">程式與應用技術</a></li>
-      <li><a href="#media">多媒體與設計實作</a></li>
-      <li><a href="#marketing">行銷與產業應用</a></li>
-      <li><a href="#creative">創意與策展設計</a></li>
-      <li><a href="#art">藝術與文化課程</a></li>
-      <li><a href="#basic">設計基礎與方法</a></li>
-      <li><a href="#others">其他創意實作</a></li>
+      <li><a href="#marketing">03</a></li>
+      <li><a href="#creative">04</a></li>
+      <li><a href="#art">05</a></li>
+      <li><a href="#basic">06</a></li>
+      <li><a href="#shortcut">影音剪輯</a></li>
+      <li><a href="#media">數位社會創新企劃</a></li>
+      <li><a href="#exhibition">展場規劃設計</a></li>
     </ul>
   </div>
 
-  <!-- 作品集內容（已存在的各分類）這邊保留 -->
+
+
+<div class="section" id="shortcut">
+  <h2>短影音剪輯 — iGoods品牌活動紀錄</h2>
+  <div style="overflow: hidden; position: relative;">
+    <div class="slide-container" id="techSlide" style="display: flex; transition: transform 0.5s ease-in-out;">
+      <!-- 最佳作品（加強樣式） -->
+<div style="min-width: 100%; padding: 20px; box-sizing: border-box;">
+  <div style="border: 3px solid rgb(118, 211, 218); border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); padding: 16px; background: white;">
+    
+    <!-- 影片置中容器 -->
+    <div style="text-align: center;">
+      <iframe width="739.2" height="411.84" 
+              src="https://www.youtube.com/embed/Nu__yWLBNEg?si=UB2r-oRdC9qqAPWi" 
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen 
+              style="display: inline-block;">
+      </iframe>
+    </div>
+
+    <br>
+    <h3 style="color: rgb(15, 142, 151);">　iGoods 品牌活動紀錄影片</h3>
+    <br>
+
+    <span style="display: inline-block; text-indent: 2em;">
+      以 Filmora 剪輯搭配 Suno 音樂創作，展現包粽同樂會的歡樂與節奏。
+    </span><br>
+    <span style="display: inline-block; text-indent: 2em;">
+      透過多角度剪輯解決重複畫面挑戰，強化活動紀實的吸引力。
+    </span>
+
+    <p style="text-indent: 2em; margin-bottom: 1em;">
+      影片預計發表於公司官方頻道，傳遞物資募集與關懷行動理念。
+    </p>
+  </div>
+</div>
+
+      <!-- 其他作品 -->
+      <div style="min-width: 100%; padding: 20px; box-sizing: border-box;">
+        <div style="border-radius: 12px; background: white; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+         <p>
+        <iframe 
+          src="https://youtube.com/embed/lK-FI3il7TI?si=YOHW6WRq-WAXnf1W" 
+          style="width: 35%; max-width: 400px; aspect-ratio: 9/16; border-radius: 10px; display: block; margin: 0 auto;"
+          allowfullscreen>
+        </iframe>
+
+          </p>
+          <br><h3 style="color: rgb(15, 142, 151);"> 　iGoods 品牌參訪紀錄</h3><br>
+
+          <span style="display: inline-block; text-indent: 2em;">
+            以 Filmora 剪輯搭配 Suno 音樂創作，呈現品牌與其他理念團體交流的精華畫面。
+          </span><br>
+          <span style="display: inline-block; text-indent: 2em;">
+            透過加入節奏感強的配樂與敘述字幕，讓片段間自然銜接，呈現出活動完整、有序的樣貌。
+          </span>
+        </p>
+        <p style="text-indent: 2em; margin-bottom: 1em;">
+          影片預計發表於公司官方頻道，傳遞品牌間的友誼合作以及關懷大眾的行動理念。
+        </p>
+        </div>
+      </div>
+
+      <!-- 再加更多作品... -->
+      <div style="min-width: 100%; padding: 20px; box-sizing: border-box;">
+        <div style="border-radius: 12px; background: white; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+         <p>
+        <iframe 
+          src="https://youtube.com/embed/nfovyV0n6UQ" 
+          style="width: 35%; max-width: 400px; aspect-ratio: 9/16; border-radius: 10px; display: block; margin: 0 auto;"
+          allowfullscreen>
+        </iframe>
+
+          </p>
+          <br><h3 style="color: rgb(15, 142, 151);"> 　iGoods 品牌參訪紀錄</h3><br>
+
+          <span style="display: inline-block; text-indent: 2em;">
+            以 Filmora 剪輯搭配 Suno 音樂創作，呈現品牌在相關性質活動其中的想法。
+          </span><br>
+          <span style="display: inline-block; text-indent: 2em;">
+            以第一人稱視角、歡樂的音樂搭配口語化字幕，讓影片觀閱者感受現場的歡樂氣氛。
+          </span>
+        </p>
+        <p style="text-indent: 2em; margin-bottom: 1em;">
+          影片預計發表於公司官方頻道，傳遞品牌間的友誼合作以及關懷大眾的行動理念。
+        </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 左右切換按鈕 -->
+<div style="display: flex; justify-content: center; align-items: center; margin-top: 10px; gap: 20px;">
+  <!-- 上一個按鈕 -->
+  <button class="arrow-btn left" onclick="prevSlide('techSlide')"></button>
+  
+  <!-- 下一個按鈕 -->
+  <button class="arrow-btn right" onclick="nextSlide('techSlide')"></button>
+</div>
+<style>
+  .arrow-btn {
+    width: 50px;
+    height: 50px;
+    border: none;
+    background: linear-gradient(135deg,  rgb(15, 142, 151) 100%);
+    cursor: pointer;
+    position: relative;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+  }
+
+  .arrow-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .arrow-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-style: solid;
+  }
+
+  .arrow-btn.left::before {
+    border-width: 10px 15px 10px 0;
+    border-color: transparent #fff transparent transparent;
+  }
+
+  .arrow-btn.right::before {
+    border-width: 10px 0 10px 15px;
+    border-color: transparent transparent transparent #fff;
+  }
+</style>
+
+
+
+  </div>
+</div>
+
+<div class="section" id="media">
+  <h2>數位社會創新企劃 — 路見不平 App 相助</h2>
+
+  <div style="position: relative; padding-top: 56.25%; height: 0; overflow: hidden;">
+    <iframe 
+      src="https://www.canva.com/design/DAGDtAlIHPM/96765QrirCgmpu2F4TwrYw/view?embed" 
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
+      allowfullscreen="allowfullscreen" allow="fullscreen">
+    </iframe>
+  </div>
+  <br>
+  <p style="text-align: left; margin-bottom: 1em;">
+    為回應台中市民眾對道路不平問題的關注，我們提出「路見不平 App 相助」行動應用設計，讓使用者在騎車或開車時，自動感測路面顛簸並回報至管理單位。
+  </p>
+
+  <p style="text-align: left; margin-bottom: 1em;">
+    本專案結合震動偵測與 GPS 資訊，無須手動拍照或填寫，即可完成道路通報，提升即時性與便利性。介面設計上採用簡潔直覺的結構，並加入點數獎勵等誘因機制，鼓勵大眾主動參與社區道路改善。
+  </p>
+
+  <p style="text-align: left; margin-bottom: 1em;">
+    使用者僅需開啟 App，即可進行資料蒐集與回報，打造便民、安全的智慧通報系統。
+  </p>
+
+  <p style="text-align: center; margin-top: 24px;">
+    <a href="https://www.figma.com/proto/1VjomLc8JQ5jMr5BQbkkd3/%E8%A8%AD%E8%A8%88%E6%95%B4%E5%90%88?node-id=8-2&t=l9FD6wK6PZBWIUrB-1" 
+       target="_blank" 
+       style="background-color: rgb(15, 142, 151); color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-size: 16px;">
+      📱 查看手機操作畫面（Figma）
+    </a>
+  </p>
+</div>
+
+<div class="section" id="exhibition">
+  <h2>展場規劃設計 — 數位系學生成果展：數位宇宙探索  </h2>
+
+  <!-- Canva 投影片嵌入 -->
+  <div style="position: relative; width: 100%; padding-top: 56.25%; box-shadow: 0 2px 8px rgba(63,69,81,0.16); border-radius: 12px; overflow: hidden; margin: 20px 0;">
+    <iframe 
+      loading="lazy" 
+      src="https://www.canva.com/design/DAFwLX40Los/znIE8lfi0mczUXu5EMCSyQ/view?embed" 
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
+      allowfullscreen="allowfullscreen" allow="fullscreen">
+    </iframe>
+  </div>
+
+  <!-- 作品介紹段落 -->
+  <p style="text-align: left; margin-bottom: 1em;">
+    本專案為數位系期中成果展場規劃作品，主題為「數位宇宙探索」，針對實體展覽空間進行創意動線設計與視覺主題提案。設計不受預算限制，著重於體驗引導與風格統一性，展現空間策展與視覺整合能力。
+  </p>
+</div>
+
+
+  <div class="section" id="cert">
+  <h2>證照</h2>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+    <!-- 證照卡片 1 -->
+    <div style="width: 300px; background: rgba(255,255,255,0.9); border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); padding: 16px; text-align: center;">
+      <img src="images/cert/cert1.png" alt="證照1" style="width: 100%; border-radius: 8px; margin-bottom: 10px;" />
+      <p><strong>Adobe Certified Professional</strong><br>
+      Graphic Design & Illustration Using Adobe Illustrator</p>
+    </div>
+
+    <!-- 證照卡片 2 -->
+    <div style="width: 300px; background: rgba(255,255,255,0.9); border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); padding: 16px; text-align: center;">
+      <img src="images/cert/cert2.png" alt="證照2" style="width: 100%; border-radius: 8px; margin-bottom: 10px;" />
+      <p><strong>Autodesk Certified User</strong><br>
+      3ds Max</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="section" id="club">
+  <h2>社團經歷</h2>
+  <ul>
+    <div style="width: 300px; background: rgba(255,255,255,0.9); border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); padding: 16px; text-align: center;">
+      <img src="images/club/exbition2.jpg" alt="證照2" style="width: 100%; border-radius: 8px; margin-bottom: 10px;" />
+      <p>系上畢製展覽總召<br></p>
+    </div>
+  </ul>
+  </div>
 
   <div class="section" id="contact">
     <h2>聯絡方式</h2>
-    <p>歡迎聯絡我洽談合作或作品諮詢：</p>
     <ul>
       <li>Email：ihsuan@email.com</li>
       <li>IG：@ihsuan.design</li>
@@ -84,24 +468,40 @@
   </footer>
 
   <script>
-    const backToTopBtn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      backToTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
-    });
+  const sliders = {};
 
-    const sliders = {};
-    function nextSlide(id) {
-      const container = document.getElementById(id);
-      if (!sliders[id]) sliders[id] = 0;
-      sliders[id] = (sliders[id] + 1) % container.children.length;
-      container.style.transform = `translateX(-${sliders[id] * 100}%)`;
+  function nextSlide(id) {
+    const container = document.getElementById(id);
+    if (!sliders[id]) sliders[id] = 0;
+    sliders[id]++;
+    const max = container.children.length;
+    if (sliders[id] >= max) sliders[id] = 0;
+    container.style.transform = `translateX(-${sliders[id] * 100}%)`;
+  }
+
+  function prevSlide(id) {
+    const container = document.getElementById(id);
+    if (!sliders[id]) sliders[id] = 0;
+    sliders[id]--;
+    const max = container.children.length;
+    if (sliders[id] < 0) sliders[id] = max - 1;
+    container.style.transform = `translateX(-${sliders[id] * 100}%)`;
+  }
+</script>
+<!-- 回到頂部按鈕 -->
+<button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">回到頂部</button>
+
+<!-- 顯示與隱藏邏輯 -->
+<script>
+  const backToTopBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.style.display = 'block';
+    } else {
+      backToTopBtn.style.display = 'none';
     }
-    function prevSlide(id) {
-      const container = document.getElementById(id);
-      if (!sliders[id]) sliders[id] = 0;
-      sliders[id] = (sliders[id] - 1 + container.children.length) % container.children.length;
-      container.style.transform = `translateX(-${sliders[id] * 100}%)`;
-    }
-  </script>
+  });
+</script>
+
 </body>
 </html>
