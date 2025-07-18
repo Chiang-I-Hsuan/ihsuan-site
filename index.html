@@ -97,7 +97,27 @@
     ul {
       line-height: 1.8;
       padding-left: 20px;
+      
     }
+
+    ul li a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #30b4c3;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 999px; /* 橢圓形的關鍵 */
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    flex-wrap: wrap
+     }
+
+    ul li a:hover {
+    background-color: #76d3da;
+    color: white;
+     }
+
+
 
     footer {
       text-align: center;
@@ -177,6 +197,34 @@
         font-size: 16px;
       }
     }
+
+.button-list {
+  display: flex;
+  flex-wrap: wrap; /* 換行，避免超出畫面 */
+  gap: 12px;        /* 每個按鈕間距 */
+  padding: 0;
+  margin: 0;
+  justify-content: center; /* ✅ 讓按鈕橫向置中 */
+}
+
+.button-list a {
+  display: inline-block;
+  background-color: rgb(15, 142, 151);
+  color: white;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 999px; /* 橢圓形 */
+  font-weight: bold;
+  font-family: 'Noto Sans TC', sans-serif;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.button-list a:hover {
+  background-color: #3cb1bb;
+  transform: scale(1.05);
+}
+
+
   </style>
 </head>
 
@@ -214,18 +262,55 @@
   
   <div class="section" id="portfolio">
     <h2>作品集</h2>
-    <ul>
-      <li><a href="#marketing">03</a></li>
-      <li><a href="#creative">04</a></li>
-      <li><a href="#art">05</a></li>
-      <li><a href="#basic">06</a></li>
-      <li><a href="#shortcut">影音剪輯</a></li>
-      <li><a href="#media">數位社會創新企劃</a></li>
-      <li><a href="#exhibition">展場規劃設計</a></li>
-    </ul>
+ <div class="button-list">
+  <a href="#illustration">2D遊戲場景</a>
+  <a href="#creative">04</a>
+  <a href="#art">05</a>
+  <a href="#basic">06</a>
+  <a href="#shortcut">影音剪輯</a>
+  <a href="#media">數位社會創新企劃</a>
+  <a href="#exhibition">展場規劃設計</a>
+</div>
   </div>
 
+<div class="section" id="illustration">
+  <h2>2D遊戲場景 - 簡約卡通風</h2>
 
+  <div style="position: relative; padding-top: 56.25%; height: 0; overflow: hidden;">
+    <iframe 
+      src="https://www.canva.com/design/DAGViyW4jXI/1isL7goZjAh0s4eq8_3D3Q/view?embed" 
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
+      allowfullscreen="allowfullscreen" allow="fullscreen">
+    </iframe>
+  </div>
+  <br>
+  <p style="text-align: left; margin-bottom: 1em;">
+    本系列場景設計以 簡約卡通風格呈現，透過不同空間氛圍的對比，展現角色Bata在故事中經歷的情感轉折與世界觀變化。
+    從溫暖熟悉的日式房間，到荒蕪詭譎的水管間與異化的海底世界，每一個場景不僅是視覺的背景，也扮演敘事推進的重要角色。
+  </p>
+  <p style="text-align: left; margin-bottom: 1em;">
+  Bata的房間（頁2）：融合和式與西式風格。這裡傳達的是Bata對於平靜生活的嚮往，也鋪陳他與外部混亂世界的對比。
+  </p>
+  <p style="text-align: left; margin-bottom: 1em;">
+  地底的水管間（頁6）：Bata意外被沖入的污染地帶。紫色基調與扭曲的水管、枯死的蘑菇共同塑造出一種詭譎感，象徵自然被破壞後的不適與恐懼。
+</p>
+  <p style="text-align: left; margin-bottom: 1em;">
+  海底的房子（頁8）：建立於熱水排放源之上的奇異建築，周圍的環境已逐漸失去原本生態樣貌。水管與變異植物的佈局，暗示污染正在向其他區域擴散。
+  </p>
+
+  <p style="text-align: left; margin-bottom: 1em;">
+  海底房子的內部（頁9）：以圓拱屋頂、橢圓窗戶、潛水艇風格的設計，加上牆面波紋、海洋元素裝飾，強調這是一個「不屬於地面的空間」，視覺上強化角色的陌生與疏離感。
+  </p>
+
+
+  <p style="text-align: center; margin-top: 24px;">
+    <a href="https://framevr.io/waterproject" 
+       target="_blank" 
+       style="background-color: rgb(15, 142, 151); color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-size: 16px;">
+      📱 查看VR展覽空間
+    </a>
+  </p>
+</div>
 
 <div class="section" id="shortcut">
   <h2>短影音剪輯 — iGoods品牌活動紀錄</h2>
@@ -443,7 +528,7 @@
 
 
 <div class="section" id="club">
-  <h2>社團經歷</h2>
+  <h2>工作及社團經歷</h2>
   <ul>
     <div style="width: 300px; background: rgba(255,255,255,0.9); border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); padding: 16px; text-align: center;">
       <img src="images/club/exbition2.jpg" alt="證照2" style="width: 100%; border-radius: 8px; margin-bottom: 10px;" />
