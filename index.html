@@ -126,21 +126,23 @@
       color: white;
     }
 
-    #backToTop {
+    #backToPortfolio {
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background-color: #333;
+      background-color: #021618;
       color: white;
       border: none;
       padding: 10px 15px;
-      border-radius: 6px;
+      border-radius: 50px;
       cursor: pointer;
+      font-size: 14px;
       display: none;
+      z-index: 1000;
     }
 
-    #backToTop:hover {
-      background-color: #555;
+    #backToPortfolio:hover {
+      background-color: #3cb1bb;
     }
 
     .arrow-btn {
@@ -231,9 +233,9 @@
 <body>
   <!-- 背景泡泡區域 -->
   <div class="bubbles">
-    <!-- 泡泡生成（10個） -->
+    <!-- 泡泡生成（15個） -->
     <script>
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 15; i++) {
         const bubble = document.createElement('div');
         bubble.className = 'bubble';
         bubble.style.width = bubble.style.height = `${Math.random() * 80 + 20}px`;
@@ -282,7 +284,23 @@
       style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
       allowfullscreen="allowfullscreen" allow="fullscreen">
     </iframe>
+
+    <div style="
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      animation: blink 2s infinite;
+      pointer-events: none;">
+      ⬅️ ➡️ 點擊兩側翻頁
+    </div>
+
   </div>
+
   <br>
   <p style="text-align: left; margin-bottom: 1em;">
     本系列場景設計以 簡約卡通風格呈現，透過不同空間氛圍的對比，展現角色Bata在故事中經歷的情感轉折與世界觀變化。
@@ -292,14 +310,14 @@
   Bata的房間（頁2）：融合和式與西式風格。這裡傳達的是Bata對於平靜生活的嚮往，也鋪陳他與外部混亂世界的對比。
   </p>
   <p style="text-align: left; margin-bottom: 1em;">
-  地底的水管間（頁6）：Bata意外被沖入的污染地帶。紫色基調與扭曲的水管、枯死的蘑菇共同塑造出一種詭譎感，象徵自然被破壞後的不適與恐懼。
+  地底的水管間（頁4）：Bata意外被沖入的污染地帶。紫色基調與扭曲的水管、枯死的蘑菇共同塑造出一種詭譎感，象徵自然被破壞後的不適與恐懼。
 </p>
   <p style="text-align: left; margin-bottom: 1em;">
-  海底的房子（頁8）：建立於熱水排放源之上的奇異建築，周圍的環境已逐漸失去原本生態樣貌。水管與變異植物的佈局，暗示污染正在向其他區域擴散。
+  海底的房子（頁6）：建立於熱水排放源之上的奇異建築，周圍的環境已逐漸失去原本生態樣貌。水管與變異植物的佈局，暗示污染正在向其他區域擴散。
   </p>
 
   <p style="text-align: left; margin-bottom: 1em;">
-  海底房子的內部（頁9）：以圓拱屋頂、橢圓窗戶、潛水艇風格的設計，加上牆面波紋、海洋元素裝飾，強調這是一個「不屬於地面的空間」，視覺上強化角色的陌生與疏離感。
+  海底房子的內部（頁7）：以圓拱屋頂、橢圓窗戶、潛水艇風格的設計，加上牆面波紋、海洋元素裝飾，強調這是一個「不屬於地面的空間」，視覺上強化角色的陌生與疏離感。
   </p>
 
 
@@ -447,6 +465,11 @@
     border-width: 10px 0 10px 15px;
     border-color: transparent transparent transparent #fff;
   }
+
+  @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
 </style>
 
 
@@ -463,6 +486,19 @@
       style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
       allowfullscreen="allowfullscreen" allow="fullscreen">
     </iframe>
+    <div style="
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      animation: blink 2s infinite;
+      pointer-events: none;">
+      ⬅️ ➡️ 點擊兩側翻頁
+    </div>
   </div>
   <br>
   <p style="text-align: left; margin-bottom: 1em;">
@@ -497,6 +533,20 @@
       style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
       allowfullscreen="allowfullscreen" allow="fullscreen">
     </iframe>
+<div style="
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      animation: blink 2s infinite;
+      pointer-events: none;">
+      ⬅️ ➡️ 點擊兩側翻頁
+    </div>
+
   </div>
 
   <!-- 作品介紹段落 -->
@@ -546,7 +596,7 @@
     </ul>
   </div>
 
-  <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">回到頂部</button>
+ <button id="backToPortfolio" onclick="scrollToPortfolio()" style="display: none;">⬆ 回到作品集</button>
 
   <footer>
     &copy; 2025 I-Hsuan. All Rights Reserved.
@@ -572,13 +622,35 @@
     if (sliders[id] < 0) sliders[id] = max - 1;
     container.style.transform = `translateX(-${sliders[id] * 100}%)`;
   }
-</script>
-<!-- 回到頂部按鈕 -->
-<button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">回到頂部</button>
 
-<!-- 顯示與隱藏邏輯 -->
-<script>
-  const backToTopBtn = document.getElementById('backToTop');
+    const backBtn = document.getElementById('backToPortfolio');
+
+  window.addEventListener('scroll', () => {
+    // 當滑動超過 300px 時顯示按鈕
+    backBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+  });
+
+ function scrollToPortfolio() {
+  const el = document.getElementById('portfolio');
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' });
+  } else {
+    localStorage.setItem('scrollToPortfolio', 'true');
+  }
+}
+
+// 當頁面載入完成後檢查是否需要自動滾動
+window.addEventListener('load', () => {
+  if (localStorage.getItem('scrollToPortfolio') === 'true') {
+    const el = document.getElementById('portfolio');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+    localStorage.removeItem('scrollToPortfolio');
+  }
+});
+
+    const backToTopBtn = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 300) {
       backToTopBtn.style.display = 'block';
@@ -586,7 +658,11 @@
       backToTopBtn.style.display = 'none';
     }
   });
+
 </script>
+<!-- 回到頂部按鈕 -->
+<button id="backToPortfolio" onclick="scrollToPortfolio()" style="display: none;">⬆ 回到作品集</button>
+
 
 </body>
 </html>
