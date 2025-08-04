@@ -277,9 +277,86 @@
     }
 
     /* 錨點避免被 header 遮擋 */
-    #about,{
+    #about{
       scroll-margin-top: 100px;
     }
+
+
+    /* 工作經歷卡片區塊 */
+    .experience-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .experience-card {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .experience-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .experience-card .title {
+      font-weight: bold;
+      color: #2c3e50;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .experience-card .company {
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .experience-card .date {
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* 技能區塊 */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 20px;
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .skill-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s;
+    }
+
+    .skill-item:hover {
+      transform: scale(1.1);
+    }
+
+    .skill-item img {
+      width: 50px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .skill-item span {
+      font-size: 14px;
+      color: #333;
+    }
+
   </style>
 </head>
 
@@ -316,7 +393,45 @@
 
   <div class="section" id="about">
     <h2>關於我</h2>
-    <p>您好，我是 I-Hsuan，一位來自台灣的數位設計師，擅長多媒體創作、互動設計與程式應用。我相信創意可以解決問題，也能創造感動，期待能透過作品與您分享我在學習與創作的旅程。</p>
+    <p>您好，我是 I-Hsuan，一位來自台灣的數位設計師，擅長多媒體創作、互動設計與程式應用。   </p>
+      <br>
+      <h3>工作經歷</h3>
+      <div class="experience-container">
+    <div class="experience-card">
+      <div class="title">臺北電玩展覽攤位工讀生</div>
+      <div class="company">悠閒史萊姆工作室</div>
+      <div class="date">2025/1~2025/1</div>
+    </div>
+
+    <div class="experience-card">
+      <div class="title">影音實習生</div>
+      <div class="company">艾谷思享創股份有限公司</div>
+      <div class="date">2024/7~2024/11</div>
+    </div>
+
+    <div class="experience-card">
+      <div class="title">國文課程教學助理</div>
+      <div class="company">國立臺中教育大學</div>
+      <div class="date">2024/1~2025/6</div>
+    </div>
+
+    <div class="experience-card">
+      <div class="title">行政工讀生</div>
+      <div class="company">國立臺中教育大學</div>
+      <div class="date">2022/9~2023/12</div>
+    </div>
+  </div>
+  <h3>技能</h3>
+  <div class="skills-container">
+    <div class="skill-item"><img src="images/logo/Adobe_Photoshop.png" alt="Photoshop"><span>Photoshop</span></div>
+    <div class="skill-item"><img src="images/logo/Adobe_Illustrator.png" alt="Illustrator"><span>Illustrator</span></div>
+    <div class="skill-item"><img src="images/logo/lightroom.png" alt="Lightroom"><span>Lightroom</span></div>
+    <div class="skill-item"><img src="images/logo/3dsmax.png" alt="3dsmax"><span>3ds Max</span></div>
+    <div class="skill-item"><img src="images/logo/wondershare-filmora.png" alt="Filmora"><span>Filmora</span></div>
+    <div class="skill-item"><img src="images/logo/canva.png" alt="Canva"><span>Canva</span></div>
+    <div class="skill-item"><img src="images/logo/Microsoft_Word.png" alt="Word"><span>Word</span></div>
+    <div class="skill-item"><img src="images/logo/Microsoft_Excel.png" alt="Excel"><span>Excel</span></div>
+  </div>
   </div>
   
   <div class="section" id="portfolio">
@@ -327,7 +442,7 @@
   <a href="#appsheet">Appsheet應用</a>
   <a href="#media">數位社會創新企劃</a>
   <a href="#exhibition">展場規劃設計</a>
-  <a href="#active">展覽互動裝置設計</a>
+  <a href="#active">展場互動裝置設計</a>
   
 </div>
   </div>
@@ -360,21 +475,8 @@
 
   <br>
   <p style="text-align: left; margin-bottom: 1em;">
-    本系列場景設計以 簡約卡通風格呈現，透過不同空間氛圍的對比，展現角色Bata在故事中經歷的情感轉折與世界觀變化。
+    本系列場景設計以<strong>簡約卡通風格</strong>呈現，透過不同空間氛圍的對比，展現角色Bata在故事中經歷的情感轉折與世界觀變化。<br><br>
     從溫暖熟悉的日式房間，到荒蕪詭譎的水管間與異化的海底世界，每一個場景不僅是視覺的背景，也扮演敘事推進的重要角色。
-  </p>
-  <p style="text-align: left; margin-bottom: 1em;">
-  Bata的房間（頁2）：融合和式與西式風格。這裡傳達的是Bata對於平靜生活的嚮往，也鋪陳他與外部混亂世界的對比。
-  </p>
-  <p style="text-align: left; margin-bottom: 1em;">
-  地底的水管間（頁4）：Bata意外被沖入的污染地帶。紫色基調與扭曲的水管、枯死的蘑菇共同塑造出一種詭譎感，象徵自然被破壞後的不適與恐懼。
-</p>
-  <p style="text-align: left; margin-bottom: 1em;">
-  海底的房子（頁6）：建立於熱水排放源之上的奇異建築，周圍的環境已逐漸失去原本生態樣貌。水管與變異植物的佈局，暗示污染正在向其他區域擴散。
-  </p>
-
-  <p style="text-align: left; margin-bottom: 1em;">
-  海底房子的內部（頁7）：以圓拱屋頂、橢圓窗戶、潛水艇風格的設計，加上牆面波紋、海洋元素裝飾，強調這是一個「不屬於地面的空間」，視覺上強化角色的陌生與疏離感。
   </p>
 
 
